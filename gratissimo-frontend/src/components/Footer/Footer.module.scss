@@ -1,0 +1,36 @@
+.footer {
+  background-color: #AB0E0E;
+  color: #ffffff;
+  padding: 3rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  h4 {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .some {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
