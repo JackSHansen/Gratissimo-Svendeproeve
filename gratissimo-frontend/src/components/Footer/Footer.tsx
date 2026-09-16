@@ -40,9 +40,9 @@ export default function Footer() {
           <p>9230 Øster Lundby</p>
           <p>+45 22 13 22 13</p>
           <div className={styles.some}>
+            <Image src="/Icon/SoMe/LinkedIn Circled.png" alt="LinkedIn" width={30} height={30} />
             <Image src="/Icon/SoMe/Facebook.png" alt="Facebook" width={30} height={30} />
             <Image src="/Icon/SoMe/Instagram Circle.png" alt="Instagram" width={30} height={30} />
-            <Image src="/Icon/SoMe/LinkedIn Circled.png" alt="LinkedIn" width={30} height={30} />
             <Image src="/Icon/SoMe/Google Plus.png" alt="Google" width={30} height={30} />
           </div>
         </div>

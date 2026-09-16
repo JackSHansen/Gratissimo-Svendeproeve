@@ -1,8 +1,6 @@
-```tsx
 "use client";
-
 import { useState, FormEvent } from "react";
-import styles from "./NyhedsbrevsTilmelding.module.scss";
+import styles from "./NyhedsbrevsTilmeldning.module.scss";
 
 export default function NyhedsbrevsTilmelding() {
   const [email, setEmail] = useState("");
@@ -37,7 +35,8 @@ export default function NyhedsbrevsTilmelding() {
   return (
     <div className={styles.newsletter}>
       <h4>Vil du have jobs direkte i din indbakke?</h4>
-
+      <p>Tilmeld dig vores elektroniske</p>
+      <p>nyhedsbrev</p>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="email"
@@ -57,4 +56,3 @@ export default function NyhedsbrevsTilmelding() {
     </div>
   );
 }
-```
