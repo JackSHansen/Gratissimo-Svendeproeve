@@ -10,6 +10,7 @@ import styles from "./page.module.scss";
 
 interface NewsItem {
   id: string;
+  title: string;
   author: string;
   createdAt: string;
   content: string;
@@ -53,6 +54,7 @@ export default function Home() {
             <NewsCards
               key={item.id}
               id={item.id}
+              title={item.title}
               author={item.author}
               createdAt={item.createdAt}
               content={item.content}

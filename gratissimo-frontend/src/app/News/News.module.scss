@@ -1,0 +1,90 @@
+.container {
+  background: #f5eeec;
+  padding: 0 7.5% 3rem;
+  margin: 0 auto;
+}
+
+.selectedArticle {
+  margin: 0 -8.1% 2.5rem;
+  background-color: #fff;
+
+  .featureImage {
+    display: block;
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+  }
+
+  .featureContent {
+    padding: 1.25rem 7.5% 2rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .meta {
+    margin: 0.35rem 0 1.2rem;
+    color: #ab0e0e;
+    font-size: 0.55rem;
+  }
+
+  .featureText {
+    max-width: 60rem;
+    white-space: pre-line;
+    font-size: 0.65rem;
+    line-height: 1.45;
+    color: #333;
+  }
+}
+
+.sectionTitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+  color: #1a1a1a;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.cardWrapper {
+  cursor: pointer;
+  border-radius: 0.7rem;
+  outline: 2px solid transparent;
+  transition: outline-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.selectedCard {
+  outline: 2px solid #ab0e0e;
+  outline-offset: 0.2rem;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .selectedArticle {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+
+    .featureImage {
+      height: 13rem;
+    }
+  }
+
+  .newsGrid {
+    grid-template-columns: 1fr;
+  }
+}
