@@ -1,21 +1,49 @@
 .sliderContainer {
-  background-color: #f5eeec;
-  padding: 2rem;
+  background-color: #fff;
+  padding: 2.25rem 1.25rem 2rem;
   text-align: center;
-  border-radius: 8px;
-  margin: 2rem 0;
+  min-height: 13rem;
 
   h3 {
     margin: 0;
     font-size: 1.25rem;
     color: #1a1a1a;
   }
+  .reviewcontent {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-  .reviewText {
-    font-style: italic;
-    margin-top: 1rem;
+  .reviewtitle {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     font-size: 1.1rem;
-    color: #333;
-    transition: opacity 0.3s ease;
+    color: #ab0e0e;
+  }
+  .reviewName {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.3rem;
+
+    button {
+      width: 0.65rem;
+      height: 0.65rem;
+      padding: 0;
+      border: 1px solid #bbb;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .activeDot {
+      background: #ab0e0e;
+      border-color: #ab0e0e;
+    }
   }
 }

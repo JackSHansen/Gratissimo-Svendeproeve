@@ -35,7 +35,7 @@ export default function Navbar() {
         ) : (
           <>
             <Link href="/Registrer">Opret Profil</Link>
-            <Link href="/Login">Log ind</Link>
+            <Link href="/Login" className={styles.loginLink}>Log ind</Link>
           </>
         )}
       </div>

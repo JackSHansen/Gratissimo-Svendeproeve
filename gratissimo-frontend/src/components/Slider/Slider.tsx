@@ -39,9 +39,25 @@ export default function Slider() {
 
   return (
     <div className={styles.sliderContainer}>
-      <p className={styles.reviewText}>
-        "{currentReview.title}" — {currentReview.content}, {currentReview.name}
+      <p className={styles.reviewtitle}>
+        "{currentReview.title}"
       </p>
+      <p className={styles.reviewcontent}>
+        {currentReview.content}
+      </p>
+      <p className={styles.reviewName}>
+        {currentReview.name}
+      </p>
+      <div className={styles.dots}>
+        {reviews.map((review, index) => (
+          <button
+            key={review.id}
+            className={index === currentIndex ? styles.activeDot : ""}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Vis anbefaling ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

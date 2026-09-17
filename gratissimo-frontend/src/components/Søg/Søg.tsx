@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import styles from "./Soeg.module.scss"; // Tilpas stien hvis din fil hedder noget andet
+import styles from "./Søg.module.scss";
 
 export default function Søg() {
   const [query, setQuery] = useState("");
@@ -25,7 +25,7 @@ export default function Søg() {
         />
         <input
           type="text"
-          placeholder="Søg..."
+          placeholder="Eks. cafémedhjælper..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className={styles.input}

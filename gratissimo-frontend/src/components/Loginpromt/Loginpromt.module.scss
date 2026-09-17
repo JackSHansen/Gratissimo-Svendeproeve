@@ -1,7 +1,6 @@
 .header {
-  background-color: #f5eeec;
-  padding: 2rem;
-  text-align: center;
+  background-color: #ffffff;
+  padding: 1.4rem 7.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,16 +8,17 @@
 
 .title {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a1a1a;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #555;
 }
 
 .loginLink {
-  background-color: #8b0808;
+  background-color: #ab0e0e;
   color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  padding: 0.5rem 2.5rem;
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
   text-decoration: none;
   transition: opacity 0.2s ease;
 
