@@ -5,41 +5,34 @@ import Image from "next/image";
 import styles from "./AnnonceCards.module.scss";
 
 interface AnnonceProps {
-  id: string;
+  id: number;
   title: string;
   category: string;
   description: string;
   location: string;
-  onFavoriteRemove?: (id: string) => void;
+  address?: string;
+  organization: string;
+  workType?: string;
+  workHome?: string;
+  createdAt: string;
+  onFavoriteRemove?: (id: number) => void;
   isFavoriteTab?: boolean;
 }
 
-export default function AnnonceCards({
-  id,
-  title,
-  category,
-  description,
-  location,
-  onFavoriteRemove,
-  isFavoriteTab,
-}: AnnonceProps) {
+export default function AnnonceCards(props: AnnonceProps) {
+  const { id, title, category, description, location, address, organization, workType, workHome, createdAt, onFavoriteRemove, isFavoriteTab } = props;
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
 
   const saveFavorite = async () => {
     const token = localStorage.getItem("token");
-    if (!token) {
-      setMsg("Du skal være logget ind for at gemme favoritter!");
-      return;
-    }
+    if (!token) return setMsg("Du skal være logget ind for at gemme favoritter");
+
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/favorites`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ annonceId: id }),
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ jobListingId: id }),
       });
       if (res.ok) setMsg("Gemt som favorit!");
     } catch {
@@ -48,50 +41,53 @@ export default function AnnonceCards({
   };
 
   return (
-    <div className={styles.card}>
-      <h3>{title}</h3>
-      <p className={styles.category}>{category}</p>
-      <p className={styles.location}>Lokation: {location}</p>
-      <p className={styles.description}>{description}</p>
-
-      {open && (
-        <div className={styles.details}>
-          <p>
-            <strong>Kontakt:</strong> Firma A/S - Tlf: 12345678
-          </p>
-        </div>
-      )}
-
-      {msg && <p className={styles.message}>{msg}</p>}
-
-      <div className={styles.actions}>
-        {!isFavoriteTab ? (
-          <button onClick={saveFavorite} className={styles.saveBtn}>
-            <span>Gem</span>
-            <Image
-              src="/Icon/icons8-favorite-50.png"
-              alt="Favorit ikon"
-              width={16}
-              height={16}
-            />
-          </button>
+    <div className={`${styles.card} ${open ? styles.open : ""}`}>
+      <div className={styles.content}>
+        <p className={styles.category}>{organization} / {category}</p>
+        <h3>{title}</h3>
+        
+        {!open ? (
+          <p className={styles.description}>{description}</p>
         ) : (
-          <button
-            onClick={() => onFavoriteRemove && onFavoriteRemove(id)}
-            className={styles.removeBtn}
-          >
-            <span>Fjern</span>
-            <Image
-              src="/Icon/icons8-favorite-50.png"
-              alt="Favorit ikon"
-              width={16}
-              height={16}
-            />
-          </button>
+          <div className={styles.details}>
+            <section><h4>Beskrivelse</h4><p>{description}</p></section>
+            <section><h4>Erfaring</h4><p>Der er ikke oplyst særlige krav til erfaring.</p></section>
+            <section><h4>Arbejdsopgaver</h4><p>Arbejdsopgaverne fremgår af beskrivelsen ovenfor.</p></section>
+          </div>
         )}
-        <button onClick={() => setOpen(!open)} className={styles.toggleBtn}>
-          {open ? "Luk" : "Åben"}
-        </button>
+      </div>
+
+      <div className={styles.sideContent}>
+        <p className={styles.location}>Lokation: {location}</p>
+        <p className={styles.createdAt}>Indrykket: {new Date(createdAt).toLocaleDateString("da-DK")}</p>
+
+        {open && (
+          <>
+            {workType && <p className={styles.workType}>Arbejdstid: {workType}</p>}
+            {workHome && <p className={styles.workHome}>Hjemmearbejde: {workHome}</p>}
+            <div className={styles.contact}>
+              <h4>Kontakt</h4>
+              <p>{organization}</p>
+              {address && <p>{address}</p>}
+            </div>
+          </>
+        )}
+
+        {msg && <p className={styles.message}>{msg}</p>}
+
+        <div className={styles.actions}>
+          <button 
+            onClick={isFavoriteTab ? () => onFavoriteRemove?.(id) : saveFavorite} 
+            className={isFavoriteTab ? styles.removeBtn : styles.saveBtn}
+          >
+            <span>{isFavoriteTab ? "Fjern" : "Gem"}</span>
+            <Image src="/Icon/icons8-favorite-50.png" alt="Favorit ikon" width={16} height={16} />
+          </button>
+
+          <button onClick={() => setOpen(!open)} className={styles.toggleBtn}>
+            {open ? "Luk" : "Åben"}
+          </button>
+        </div>
       </div>
     </div>
   );

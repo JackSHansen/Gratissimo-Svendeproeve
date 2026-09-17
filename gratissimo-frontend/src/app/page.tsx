@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Søg from "@/components/Søg/Søg";
-import Filter from "@/components/Filter/Filter";
+import Filter, { FilterValues } from "@/components/Filter/Filter";
 import Kategorier from "@/components/Kategorier/Kategorier";
 import NewsCards from "@/components/NewsCards/NewsCards";
 import Slider from "@/components/Slider/Slider";
@@ -18,6 +18,13 @@ interface NewsItem {
 
 export default function Home() {
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [filters, setFilters] = useState<FilterValues>({
+    region: "",
+    kategori: "",
+    arbejdstid: "",
+    periode: "",
+    hjemmearbejde: "",
+  });
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`)
@@ -30,8 +37,8 @@ export default function Home() {
     <div className={styles.container}>
       <section className={styles.searchSection}>
         <h2>Søg frivilligt arbejde:</h2>
-        <Søg />
-        <Filter />
+        <Søg filters={filters} />
+        <Filter onChange={setFilters} />
       </section>
 
       <section className={styles.categorySection}>

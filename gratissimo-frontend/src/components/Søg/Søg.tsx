@@ -1,28 +1,50 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { FilterValues } from "../Filter/Filter";
 import styles from "./Søg.module.scss";
 
-export default function Søg() {
+interface Job {
+  id: number;
+  title: string;
+  organization: string;
+  city: string;
+  createdAt: string;
+  workHome: string;
+  region?: { name: string };
+  workType?: { type: string };
+  jobCategory?: { name: string | null };
+}
+
+export default function Søg({ filters }: { filters?: FilterValues }) {
   const [query, setQuery] = useState("");
+  const [jobs, setJobs] = useState<Job[]>([]);
   const router = useRouter();
 
-  const handleSearch = (e: FormEvent) => {
-    e.preventDefault();
-    router.push(`/Soeg?q=${encodeURIComponent(query)}`);
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/job-listings`)
+      .then((res) => res.json())
+      .then(setJobs)
+      .catch(() => setJobs([]));
+  }, []);
+
+  const navigate = (q: string) => {
+    const params = new URLSearchParams(window.location.search);
+    q ? params.set("q", q) : params.delete("q");
+    setQuery("");
+    router.push(`/Soeg?${params.toString()}`);
   };
 
+  const suggestions = query.trim()
+    ? jobs.filter((job) => isMatch(job, query, filters)).slice(0, 5)
+    : [];
+
   return (
-    <form onSubmit={handleSearch} className={styles.searchForm}>
+    <form onSubmit={(e) => { e.preventDefault(); navigate(query); }} className={styles.searchForm}>
       <div className={styles.inputWrapper}>
-        <Image
-          src="/Icon/icons8-search-50.png"
-          alt="Søg"
-          width={20}
-          height={20}
-        />
+        <Image src="/Icon/icons8-search-50.png" alt="Søg" width={20} height={20} />
         <input
           type="text"
           placeholder="Eks. cafémedhjælper..."
@@ -31,9 +53,49 @@ export default function Søg() {
           className={styles.input}
         />
       </div>
-      <button type="submit" className={styles.submitButton}>
-        Søg
-      </button>
+      <button type="submit" className={styles.submitButton}>Søg</button>
+
+      {suggestions.length > 0 && (
+        <div className={styles.suggestions}>
+          {suggestions.map((job) => (
+            <button
+              type="button"
+              key={job.id}
+              className={styles.suggestion}
+              onClick={() => navigate(job.title)}
+            >
+              <strong>{job.title}</strong>
+              <span>{job.organization} · {job.city}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </form>
+  );
+}
+
+
+function isMatch(job: Job, query: string, filters?: FilterValues) {
+  const q = query.toLowerCase();
+  const text = `${job.title} ${job.organization} ${job.city} ${job.jobCategory?.name || ""}`.toLowerCase();
+  if (!text.includes(q)) return false;
+
+  if (!filters) return true;
+
+  const reg = filters.region.toLowerCase();
+  const cat = filters.kategori.toLowerCase();
+  const wt = filters.arbejdstid.toLowerCase();
+  const wh = filters.hjemmearbejde.toLowerCase();
+  const created = new Date(job.createdAt).getTime();
+  const now = Date.now();
+
+  return (
+    (!reg || job.region?.name.toLowerCase() === reg || job.city.toLowerCase() === reg) &&
+    (!cat || job.jobCategory?.name?.toLowerCase() === cat) &&
+    (!wt || job.workType?.type.toLowerCase() === wt) &&
+    (!wh || job.workHome.toLowerCase() === wh) &&
+    (!filters.periode ||
+      (filters.periode === "Denne uge" && created >= now - 604800000) ||
+      (filters.periode === "Denne måned" && created >= now - 2592000000))
   );
 }

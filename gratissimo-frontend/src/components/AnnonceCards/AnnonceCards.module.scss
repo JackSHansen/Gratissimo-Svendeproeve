@@ -1,37 +1,87 @@
 .card {
-  border: 1px solid #ddd;
-  padding: 1.5rem;
-  border-radius: 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 27%;
+  gap: 1.5rem;
+  border: 1px solid #d0cccb;
+  padding: 2rem 5.8%;
+  border-radius: 1rem;
   margin: 1rem 0;
   background-color: #fff;
 
+  .content {
+    min-width: 0;
+  }
+
   h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
+    margin: 0.9rem 0 1rem;
+    font-size: 1.55rem;
+    font-weight: 500;
+    line-height: 1.1;
   }
 
   .category {
-    color: #ab0e0e;
-    font-weight: bold;
-    margin: 0 0 0.25rem 0;
+    color: #222;
+    font-size: 0.9rem;
+    margin: 0;
   }
 
   .location {
-    margin: 0 0 0.5rem 0;
-    color: #555;
+    margin: 0 0 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .createdAt {
+    margin: 0;
+    font-size: 0.9rem;
   }
 
   .description {
-    margin-top: 0.5rem;
+    max-width: 48rem;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .sideContent {
+    padding-top: 0.15rem;
   }
 
   .details {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+    margin-top: 2rem;
+
+    section {
+      margin-bottom: 1.5rem;
+    }
+
+    h4 {
+      margin: 0 0 0.45rem;
+      font-size: 0.95rem;
+    }
 
     p {
       margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+  }
+
+  .workType,
+  .workHome {
+    margin: 0 0 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .contact {
+    margin-top: 10rem;
+
+    h4 {
+      margin: 0 0 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
     }
   }
 
@@ -42,13 +92,16 @@
   }
 
   .actions {
-    margin-top: 1rem;
     display: flex;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    gap: 1.2rem;
+    margin-top: 4rem;
 
     button {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      width: 8.7rem;
+      height: 2.4rem;
+      padding: 0;
+      border-radius: 1.5rem;
       cursor: pointer;
       font-size: 0.9rem;
       transition: background-color 0.2s ease, opacity 0.2s ease;
@@ -56,8 +109,8 @@
 
     .saveBtn {
       background-color: #f5eeec;
-      border: 1px solid #ab0e0e;
-      color: #ab0e0e;
+      border: 1px solid #c7c1bf;
+      color: #222;
 
       &:hover {
         background-color: #ebdcd8;
@@ -75,13 +128,33 @@
     }
 
     .toggleBtn {
-      background-color: #eee;
-      border: none;
+      background-color: #f5eeec;
+      border: 1px solid #c7c1bf;
       color: #333;
 
       &:hover {
         background-color: #e0e0e0;
       }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+
+    h3 {
+      font-size: 1.35rem;
+    }
+
+    .actions {
+      margin-top: 0;
+    }
+
+    .contact {
+      margin-top: 2rem;
     }
   }
 }

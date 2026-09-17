@@ -1,0 +1,23 @@
+.container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  h2 {
+    margin: 2rem 0 1rem 0;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+  }
+}
+
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 0;
+  color: #666;
+}
