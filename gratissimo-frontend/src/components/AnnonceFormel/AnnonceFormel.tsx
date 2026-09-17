@@ -28,7 +28,13 @@ export default function AdForm({ onSuccess }: { onSuccess?: () => void }) {
     if (!user?.id) return setMsg("Din bruger kunne ikke findes. Log ind igen.");
 
     const raw = Object.fromEntries(new FormData(e.currentTarget));
-    const body = JSON.stringify({ ...raw, organization: raw.organisation, userId: user.id, workHome: "On-site" });
+    const { organisation, ...fields } = raw;
+    const body = JSON.stringify({
+      ...fields,
+      organization: organisation,
+      userId: user.id,
+      workHome: "On-site",
+    });
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/job-listings`, {
@@ -37,7 +43,10 @@ export default function AdForm({ onSuccess }: { onSuccess?: () => void }) {
         body,
       });
 
-      if (!res.ok) return setMsg("Udfyld venligst alle felter korrekt.");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        return setMsg(data?.error || "Udfyld venligst alle felter korrekt.");
+      }
 
       setMsg("Annonce oprettet succesfuldt!");
       onSuccess?.();

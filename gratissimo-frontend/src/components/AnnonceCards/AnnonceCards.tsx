@@ -17,12 +17,16 @@ interface AnnonceProps {
   createdAt: string;
   onFavoriteRemove?: (id: number) => void;
   isFavoriteTab?: boolean;
+  isOwner?: boolean;
+  onDelete?: (id: number) => void;
+  onEdit?: (id: number) => void;
 }
 
 export default function AnnonceCards(props: AnnonceProps) {
-  const { id, title, category, description, location, address, organization, workType, workHome, createdAt, onFavoriteRemove, isFavoriteTab } = props;
+  const { id, title, category, description, location, address, organization, workType, workHome, createdAt, onFavoriteRemove, isFavoriteTab, isOwner, onDelete, onEdit } = props;
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
 
   const saveFavorite = async () => {
     const token = localStorage.getItem("token");
@@ -34,7 +38,10 @@ export default function AnnonceCards(props: AnnonceProps) {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ jobListingId: id }),
       });
-      if (res.ok) setMsg("Gemt som favorit!");
+      if (res.ok) {
+        setIsSaved(true);
+        setMsg("Gemt som favorit!");
+      }
     } catch {
       setMsg("Fejl ved gemning af favorit.");
     }
@@ -76,17 +83,27 @@ export default function AnnonceCards(props: AnnonceProps) {
         {msg && <p className={styles.message}>{msg}</p>}
 
         <div className={styles.actions}>
-          <button 
-            onClick={isFavoriteTab ? () => onFavoriteRemove?.(id) : saveFavorite} 
-            className={isFavoriteTab ? styles.removeBtn : styles.saveBtn}
-          >
-            <span>{isFavoriteTab ? "Fjern" : "Gem"}</span>
-            <Image src="/Icon/icons8-favorite-50.png" alt="Favorit ikon" width={16} height={16} />
-          </button>
+          {isOwner ? (
+            <>
+              <button onClick={() => onDelete?.(id)} className={styles.removeBtn}>Slet</button>
+              <button onClick={() => onEdit?.(id)} className={styles.toggleBtn}>Rediger</button>
+            </>
+          ) : (
+            <button
+              onClick={isFavoriteTab ? () => onFavoriteRemove?.(id) : isSaved ? undefined : saveFavorite}
+              className={isFavoriteTab || isSaved ? styles.removeBtn : styles.saveBtn}
+              disabled={isSaved && !isFavoriteTab}
+            >
+              <span>{isFavoriteTab ? "Fjern" : isSaved ? "Gemt" : "Gem"}</span>
+              {!isFavoriteTab && !isSaved && <Image src="/Icon/icons8-favorite-50.png" alt="Favorit ikon" width={16} height={16} />}
+            </button>
+          )}
 
-          <button onClick={() => setOpen(!open)} className={styles.toggleBtn}>
-            {open ? "Luk" : "Åben"}
-          </button>
+          {!isOwner && (
+            <button onClick={() => setOpen(!open)} className={styles.toggleBtn}>
+              {open ? "Luk" : "Åben"}
+            </button>
+          )}
         </div>
       </div>
     </div>

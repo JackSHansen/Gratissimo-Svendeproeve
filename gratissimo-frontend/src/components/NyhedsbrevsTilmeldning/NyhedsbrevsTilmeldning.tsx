@@ -6,16 +6,23 @@ export default function NyhedsbrevsTilmelding() {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setMsg("Du skal være logget ind for at tilmelde dig nyhedsbrevet.");
+      return;
+    }
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/subscribe`,
+        `${process.env.NEXT_PUBLIC_API_URL}/newsletter`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ email }),
         }
@@ -25,7 +32,8 @@ export default function NyhedsbrevsTilmelding() {
         setMsg("Tak for din tilmelding!");
         setEmail("");
       } else {
-        setMsg("Der opstod en fejl.");
+        const data = await res.json().catch(() => null);
+        setMsg(data?.error || "Der opstod en fejl.");
       }
     } catch {
       setMsg("Kunne ikke forbinde til serveren.");
