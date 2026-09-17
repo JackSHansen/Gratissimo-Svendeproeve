@@ -1,7 +1,7 @@
 .logo {
     display: flex;
     align-items: center;
-    background-color: #AB0E0E;
+    background-color: var(--primary);
     height: 5.5rem;
     padding: 0 7.5%;
 
@@ -10,3 +10,14 @@
       width: 10.5rem;
     }
   }
+
+@media (max-width: 600px) {
+  .logo {
+    height: 4.5rem;
+    padding-inline: 5%;
+
+    img {
+      width: 8.5rem;
+    }
+  }
+}

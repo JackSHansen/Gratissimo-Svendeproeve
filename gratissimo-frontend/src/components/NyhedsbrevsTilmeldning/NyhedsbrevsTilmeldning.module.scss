@@ -31,8 +31,8 @@
 .button {
   height: 2.4rem;
   padding: 0 1rem;
-  background-color: #8b0808;
-  color: #fff;
+  background-color: var(--primary-dark);
+  color: var(--surface);
   border: none;
   border-radius: 0 1rem 1rem 0;
   font-family: inherit;
@@ -41,7 +41,7 @@
 }
 
 .message {
-  color: #fff;
+  color: var(--surface);
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }

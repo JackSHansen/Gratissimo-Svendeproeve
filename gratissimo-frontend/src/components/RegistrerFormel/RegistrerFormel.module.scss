@@ -1,66 +1,110 @@
 .form {
-  width: 15rem;
+  width: min(100%, 22.5rem);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.25rem;
+  gap: 0.7rem;
+
+  > div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0.4rem;
+  }
 
   label {
-    color: #444;
-    font-size: 0.52rem;
-    text-align: left;
+    color: var(--text-body);
+    font-size: 0.7rem;
+    text-align: right;
   }
 
   input {
-    height: 1.5rem;
-    padding: 0.3rem 0.45rem;
-    margin-bottom: 0.45rem;
-    border: 1px solid #d8cdca;
-    border-radius: 0.25rem;
-    background-color: #f5eeec;
-    color: #333;
-    font-size: 0.52rem;
+    width: 100%;
+    height: 2.25rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 0.35rem;
+    background-color: var(--bg-light);
+    color: var(--text-body);
+    font-size: 0.7rem;
 
     &::placeholder {
-      color: #b5aaa7;
+      color: var(--placeholder);
     }
 
     &:focus {
       outline: none;
-      border-color: #8b0808;
+      border-color: var(--primary-dark);
     }
   }
 
   button {
-    height: 1.35rem;
-    margin-top: 0.85rem;
-    background-color: #c10e0e;
-    color: #fff;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
+    background-color: var(--button-red);
+    color: var(--surface);
     border: none;
     border-radius: 1rem;
-    font-size: 0.52rem;
+    font-size: 0.7rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #ab0e0e;
+      background-color: var(--primary);
     }
   }
 }
 
 .message {
-  color: #ab0e0e;
-  margin: 0.5rem auto 0;
-  font-size: 0.6rem;
+  color: var(--primary);
+  margin: 1rem auto 0;
+  font-size: 0.7rem;
 }
 
 .loginLink {
   display: block;
-  width: 15rem;
-  margin: 0.8rem auto 0;
-  color: #c14b4b;
-  font-size: 0.55rem;
+  width: min(100%, 22.5rem);
+  margin: 1rem auto 0;
+  color: var(--text-soft);
+  font-size: 0.7rem;
   text-align: left;
   text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .form {
+    width: min(100%, 26rem);
+    gap: 1rem;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.35rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      text-align: left;
+    }
+
+    input {
+      height: 3.1rem;
+      font-size: 0.95rem;
+    }
+
+    button {
+      height: 2.6rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  .loginLink {
+    width: min(100%, 26rem);
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+  }
 }

@@ -1,9 +1,9 @@
 .card {
   cursor: pointer;
-  border: 1px solid #d9d5d4;
+  border: 1px solid var(--border-muted);
   padding: 0.75rem;
   border-radius: 0.55rem;
-  background-color: #fff;
+  background-color: var(--surface);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   .image {
@@ -23,18 +23,18 @@
     margin: 0;
     font-size: 0.72rem;
     line-height: 1.35;
-    color: #1a1a1a;
+    color: var(--text);
   }
 
   .meta {
-    color: #ab0e0e;
+    color: var(--primary);
     font-size: 0.55rem;
     margin-bottom: 0.45rem;
   }
 
   .teaser {
     font-size: 0.65rem;
-    color: #666;
+    color: var(--text-muted);
     margin: 0.45rem 0 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;

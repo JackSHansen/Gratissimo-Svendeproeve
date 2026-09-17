@@ -8,7 +8,7 @@
 .profileCard {
   margin: 0 -5.25% 2.2rem;
   padding: 2.6rem 1.5rem 1.6rem;
-  background-color: #f5eeec;
+  background-color: var(--bg-light);
   text-align: center;
 
   h2 {
@@ -29,7 +29,7 @@
     margin: 4.4rem auto 0;
 
     .editLink {
-      color: #ab0e0e;
+      color: var(--primary);
       font-weight: 500;
       text-decoration: underline;
     }
@@ -41,14 +41,14 @@
   width: min(100%, 35rem);
   margin: 0 auto 2.4rem;
   overflow: hidden;
-  border: 1px solid #d0cccb;
+  border: 1px solid var(--border-muted);
   border-radius: 1.5rem;
 
   .tabButton {
     flex: 1;
     padding: 0.6rem 1rem;
-    background-color: #f5eeec;
-    color: #000;
+    background-color: var(--bg-light);
+    color: var(--text-strong);
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
@@ -57,8 +57,8 @@
     transition: background-color 0.2s ease, color 0.2s ease;
 
     &.active {
-      background-color: #8b0808;
-      color: #fff;
+      background-color: var(--primary-dark);
+      color: var(--surface);
     }
   }
 }
@@ -67,8 +67,8 @@
   margin-bottom: 1.2rem;
 
   .deleteButton {
-    background-color: #ab0e0e;
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--surface);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -77,7 +77,7 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: #8b0808;
+      background-color: var(--primary-dark);
     }
   }
 }

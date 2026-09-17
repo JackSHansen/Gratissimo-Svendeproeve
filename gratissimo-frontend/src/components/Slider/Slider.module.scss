@@ -1,5 +1,5 @@
 .sliderContainer {
-  background-color: #fff;
+  background-color: var(--surface);
   padding: 2.25rem 1.25rem 2rem;
   text-align: center;
   min-height: 13rem;
@@ -7,7 +7,7 @@
   h3 {
     margin: 0;
     font-size: 1.25rem;
-    color: #1a1a1a;
+    color: var(--text);
   }
   .reviewcontent {
     margin-top: 0.5rem;
@@ -18,7 +18,7 @@
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-    color: #ab0e0e;
+    color: var(--primary);
   }
   .reviewName {
     margin-top: 0.5rem;
@@ -35,15 +35,15 @@
       width: 0.65rem;
       height: 0.65rem;
       padding: 0;
-      border: 1px solid #bbb;
+      border: 1px solid var(--border-light);
       border-radius: 50%;
-      background: #fff;
+      background: var(--surface);
       cursor: pointer;
     }
 
     .activeDot {
-      background: #ab0e0e;
-      border-color: #ab0e0e;
+      background: var(--primary);
+      border-color: var(--primary);
     }
   }
 }

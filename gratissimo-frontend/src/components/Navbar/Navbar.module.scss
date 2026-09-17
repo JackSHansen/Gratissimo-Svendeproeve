@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #8B0808;
+  background-color: var(--primary-dark);
   min-height: 2.25rem;
   padding: 0.55rem 7.5%;
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
 
   a {
-    color: #ffffff;
+    color: var(--surface);
     text-decoration: none;
     margin-right: 1.25rem;
     font-size: 0.65rem;
@@ -19,8 +19,19 @@
   }
 
   .loginLink {
-    border-left: 1px solid #ffffff;
+    border-left: 1px solid var(--surface);
     padding-left: 0.8rem;
     margin-left: 0.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding-inline: 5%;
+
+    a {
+      margin-right: 0.65rem;
+      font-size: 0.58rem;
+    }
   }
 }

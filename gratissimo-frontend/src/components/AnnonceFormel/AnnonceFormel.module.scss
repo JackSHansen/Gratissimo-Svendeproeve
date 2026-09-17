@@ -24,7 +24,7 @@
 
 .form label {
   display: block;
-  color: #444;
+  color: var(--text-label);
   font-size: 0.58rem;
   text-align: left;
 }
@@ -33,24 +33,24 @@
 .form select,
 .form textarea {
   width: 100%;
-  border: 1px solid #d8cdca;
+  border: 1px solid var(--border);
   border-radius: 0.3rem;
-  background-color: #f5eeec;
-  color: #555;
+  background-color: var(--bg-light);
+  color: var(--text-muted);
   font-family: inherit;
   font-size: 0.58rem;
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #b5aaa7;
+  color: var(--placeholder);
 }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
   outline: none;
-  border-color: #8b0808;
+  border-color: var(--primary-dark);
 }
 
 .form input,
@@ -79,8 +79,8 @@
   padding: 0 1.25rem;
   border: none;
   border-radius: 1rem;
-  background-color: #c10e0e;
-  color: #fff;
+  background-color: var(--button-red);
+  color: var(--surface);
   font-family: inherit;
   font-size: 0.58rem;
   cursor: pointer;
@@ -88,13 +88,13 @@
 }
 
 .form > button:hover {
-  background-color: #ab0e0e;
+  background-color: var(--primary);
 }
 
 .message {
   max-width: 33.5rem;
   margin: 1rem auto 0;
-  color: #ab0e0e;
+  color: var(--primary);
   font-size: 0.65rem;
   text-align: center;
 }

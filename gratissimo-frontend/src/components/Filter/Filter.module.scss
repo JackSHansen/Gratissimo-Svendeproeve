@@ -13,22 +13,22 @@
 
   select {
     padding: 0.45rem 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-muted);
     border-radius: 1rem;
-    background-color: #fff;
+    background-color: var(--surface);
     font-size: 0.65rem;
     outline: none;
     cursor: pointer;
 
     &:focus {
-      border-color: #ab0e0e;
+      border-color: var(--primary);
     }
   }
 }
 
 .filterButton {
-  background-color: #ab0e0e;
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--surface);
   border: none;
   padding: 0.5rem 0.75rem;
   border-radius: 1rem;
@@ -43,7 +43,7 @@
 
 .resetButton {
   background: transparent;
-  color: #333;
+  color: var(--text-body);
   border: none;
   padding: 0.5rem 0.2rem;
   font-size: 0.65rem;
@@ -51,6 +51,6 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #bbb;
+    background-color: var(--border-light);
   }
 }

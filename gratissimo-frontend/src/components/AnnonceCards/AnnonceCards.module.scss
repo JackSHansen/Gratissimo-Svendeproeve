@@ -2,11 +2,11 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 23%;
   gap: 1rem;
-  border: 1px solid #d0cccb;
+  border: 1px solid var(--border-muted);
   padding: 1.35rem 5.8%;
   border-radius: 0.55rem;
   margin: 0;
-  background-color: #fff;
+  background-color: var(--surface);
 
   .content {
     min-width: 0;
@@ -20,7 +20,7 @@
   }
 
   .category {
-    color: #222;
+    color: var(--text-body);
     font-size: 0.55rem;
     margin: 0;
   }
@@ -86,7 +86,7 @@
   }
 
   .message {
-    color: #ab0e0e;
+    color: var(--primary);
     font-size: 0.85rem;
     margin-top: 0.5rem;
   }
@@ -113,9 +113,9 @@
       align-items: center;
       justify-content: center;
       gap: 0.3rem;
-      background-color: #f5eeec;
-      border: 1px solid #c7c1bf;
-      color: #222;
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-muted);
+      color: var(--text-body);
       line-height: 1;
 
       img {
@@ -126,13 +126,13 @@
       }
 
       &:hover {
-        background-color: #ebdcd8;
+        background-color: var(--bg-light);
       }
     }
 
     .removeBtn {
-      background-color: #ab0e0e;
-      color: #fff;
+      background-color: var(--primary);
+      color: var(--surface);
       border: none;
 
       &:hover {
@@ -141,12 +141,12 @@
     }
 
     .toggleBtn {
-      background-color: #f5eeec;
-      border: 1px solid #c7c1bf;
-      color: #333;
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-muted);
+      color: var(--text-body);
 
       &:hover {
-        background-color: #e0e0e0;
+        background-color: var(--surface);
       }
     }
   }

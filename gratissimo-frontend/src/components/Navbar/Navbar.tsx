@@ -4,11 +4,21 @@ import { useEffect, useState } from "react";
 import styles from "./Navbar.module.scss";
 
 export default function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const checkAuth = () => {
+      setIsLoggedIn(Boolean(localStorage.getItem("token")));
+    };
+
+    checkAuth();
+    window.addEventListener("storage", checkAuth);
+    window.addEventListener("auth-change", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+      window.removeEventListener("auth-change", checkAuth);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -17,6 +27,10 @@ export default function Navbar() {
     window.dispatchEvent(new Event("auth-change"));
     window.location.href = "/Login";
   };
+
+  if (isLoggedIn === null) {
+    return <nav className={styles.navbar} />;
+  }
 
   return (
     <nav className={styles.navbar}>

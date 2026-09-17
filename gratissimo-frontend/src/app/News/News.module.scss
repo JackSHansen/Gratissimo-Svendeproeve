@@ -1,12 +1,12 @@
 .container {
-  background: #f5eeec;
+  background: var(--bg-light);
   padding: 0 7.5% 3rem;
   margin: 0 auto;
 }
 
 .selectedArticle {
   margin: 0 -8.1% 2.5rem;
-  background-color: #fff;
+  background-color: var(--surface);
 
   .featureImage {
     display: block;
@@ -27,7 +27,7 @@
 
   .meta {
     margin: 0.35rem 0 1.2rem;
-    color: #ab0e0e;
+    color: var(--primary);
     font-size: 0.55rem;
   }
 
@@ -36,7 +36,7 @@
     white-space: pre-line;
     font-size: 0.65rem;
     line-height: 1.45;
-    color: #333;
+    color: var(--text-body);
   }
 }
 
@@ -44,7 +44,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 1.2rem;
-  color: #1a1a1a;
+  color: var(--text);
 }
 
 .newsGrid {
@@ -65,7 +65,7 @@
 }
 
 .selectedCard {
-  outline: 2px solid #ab0e0e;
+  outline: 2px solid var(--primary);
   outline-offset: 0.2rem;
 }
 

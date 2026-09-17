@@ -5,12 +5,12 @@
 .profileIntro {
   min-height: 12rem;
   padding: 2.6rem 1.5rem 1.6rem;
-  background-color: #f5eeec;
+  background-color: var(--bg-light);
   text-align: center;
 
   h1 {
     margin: 0;
-    color: #1a1a1a;
+    color: var(--text);
     font-size: 1.35rem;
     font-weight: 500;
   }
@@ -18,7 +18,7 @@
   p {
     max-width: 28rem;
     margin: 1.8rem auto 0;
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.58rem;
     line-height: 1.35;
   }
@@ -32,7 +32,7 @@
   margin: 4.3rem auto 0;
 
   a {
-    color: #c14b4b;
+    color: var(--text-soft);
     font-size: 0.58rem;
     text-decoration: underline;
   }
@@ -41,12 +41,12 @@
 .editSection {
   min-height: 24rem;
   padding: 2.4rem 1.5rem 3.5rem;
-  background-color: #fff;
+  background-color: var(--surface);
   text-align: center;
 
   h2 {
     margin: 0 0 1.8rem;
-    color: #1a1a1a;
+    color: var(--text);
     font-size: 1.15rem;
     font-weight: 500;
   }
@@ -55,7 +55,7 @@
 .message {
   max-width: 14rem;
   margin: 1rem auto 0;
-  color: #ab0e0e;
+  color: var(--primary);
   font-size: 0.65rem;
 }
 
