@@ -1,0 +1,21 @@
+.sliderContainer {
+  background-color: #f5eeec;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  margin: 2rem 0;
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #1a1a1a;
+  }
+
+  .reviewText {
+    font-style: italic;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+    transition: opacity 0.3s ease;
+  }
+}

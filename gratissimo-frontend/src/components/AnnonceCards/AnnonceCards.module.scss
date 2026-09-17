@@ -1,0 +1,87 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  background-color: #fff;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .category {
+    color: #ab0e0e;
+    font-weight: bold;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .location {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+  }
+
+  .description {
+    margin-top: 0.5rem;
+  }
+
+  .details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .message {
+    color: #ab0e0e;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .saveBtn {
+      background-color: #f5eeec;
+      border: 1px solid #ab0e0e;
+      color: #ab0e0e;
+
+      &:hover {
+        background-color: #ebdcd8;
+      }
+    }
+
+    .removeBtn {
+      background-color: #ab0e0e;
+      color: #fff;
+      border: none;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .toggleBtn {
+      background-color: #eee;
+      border: none;
+      color: #333;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+}
