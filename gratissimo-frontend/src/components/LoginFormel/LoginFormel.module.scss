@@ -1,0 +1,66 @@
+.form {
+  width:  15rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+
+  label {
+    color: #444;
+    font-size: 0.52rem;
+    text-align: left;
+  }
+
+  input {
+    height: 1.5rem;
+    padding: 0.3rem 0.45rem;
+    margin-bottom: 0.45rem;
+    border: 1px solid #d8cdca;
+    border-radius: 0.25rem;
+    background-color: #f5eeec;
+    color: #333;
+    font-size: 0.52rem;
+
+    &::placeholder {
+      color: #b5aaa7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #8b0808;
+    }
+  }
+
+  button {
+    height: 1.35rem;
+    margin-top: 0.85rem;
+    background-color: #c10e0e;
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    font-size: 0.52rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #ab0e0e;
+    }
+  }
+}
+
+.message {
+  color: #ab0e0e;
+  margin: 0.5rem auto 0;
+  font-size: 0.6rem;
+}
+
+.registerLink {
+  display: block;
+  width: min(100%, 10.4rem);
+  margin: 0.8rem auto 0;
+  color: #c14b4b;
+  font-size: 0.55rem;
+  text-align: left;
+  text-decoration: none;
+}

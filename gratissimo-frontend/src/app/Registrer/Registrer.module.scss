@@ -1,0 +1,55 @@
+.container {
+  width: 100%;
+}
+
+.intro {
+  min-height: 9rem;
+  padding: 2rem 1.5rem 1.75rem;
+  background-color: #f5eeec;
+  text-align: center;
+
+  h1 {
+    color: #1a1a1a;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+
+  p {
+    max-width: 27rem;
+    margin: 0 auto 1rem;
+    color: #666;
+    font-size: 0.55rem;
+    line-height: 1.35;
+  }
+
+  a {
+    color: #c14b4b;
+    font-size: 0.55rem;
+    text-decoration: underline;
+  }
+}
+
+.registerSection {
+  min-height: 24.75rem;
+  padding: 1.8rem 1.5rem 2.5rem;
+  background-color: #fff;
+  text-align: center;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro {
+    padding-inline: 1rem;
+  }
+
+  .intro h1 {
+    font-size: 1.1rem;
+  }
+}
