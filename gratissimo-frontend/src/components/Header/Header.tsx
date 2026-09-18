@@ -7,10 +7,13 @@ export default function Header() {
   
 
   return (
+    <>
+      {/* Logoet linker tilbage til forsiden. */}
       <div className={styles.logo}>
         <Link href="/">
           <Image src="/Logo/logo-white.png" alt="Gratissimo Logo" width={150} height={40} />
         </Link>
       </div>
+      </>
   );
 }

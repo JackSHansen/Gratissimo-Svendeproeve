@@ -28,6 +28,7 @@ export default function Home() {
   });
 
   useEffect(() => {
+    // Henter de tre nyeste artikler til forsiden.
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`)
       .then((res) => res.json())
       .then((data) => setNews(data.slice(0, 3)))
@@ -37,6 +38,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <section className={styles.searchSection}>
+        {/* Forsiden samler søgning, filtre, kategorier og nyheder. */}
         <h2>Søg frivilligt arbejde:</h2>
         <Søg filters={filters} />
         <Filter onChange={setFilters} />

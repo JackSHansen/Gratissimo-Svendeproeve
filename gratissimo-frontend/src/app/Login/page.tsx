@@ -9,6 +9,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleLoginSuccess = () => {
+    // Sender brugeren til sin side efter et vellykket login.
     router.push("/MyPage");
   };
 

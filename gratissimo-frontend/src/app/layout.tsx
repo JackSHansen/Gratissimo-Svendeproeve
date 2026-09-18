@@ -8,6 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="da">
       <body>
+        {/* Fælles sidedele vises omkring den aktuelle route. */}
         <Header />
         <Navbar />
         <Loginpromt />

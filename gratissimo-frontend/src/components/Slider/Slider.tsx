@@ -15,6 +15,7 @@ export default function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    // Henter anbefalingerne fra API'et.
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/testimony`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
@@ -22,6 +23,7 @@ export default function Slider() {
   }, []);
 
   useEffect(() => {
+    // Skifter automatisk til næste anbefaling hvert femte sekund.
     if (reviews.length === 0) return;
 
     const interval = setInterval(() => {

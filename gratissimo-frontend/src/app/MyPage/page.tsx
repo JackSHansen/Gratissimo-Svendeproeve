@@ -6,6 +6,7 @@ import AnnonceCards from "@/components/AnnonceCards/AnnonceCards";
 import styles from "./Mypage.module.scss";
 
 const toAnnonce = (job: any) => ({
+  // Tilpasser API-data til de felter, annoncekortet forventer.
   id: job.id,
   title: job.title,
   description: job.description,
@@ -25,6 +26,7 @@ export default function MyPage() {
   const [favorites, setFavorites] = useState<any[]>([]);
 
   useEffect(() => {
+    // Henter brugerens egne annoncer og gemte favoritter.
     const userData = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     if (userData) setUser(JSON.parse(userData));
@@ -45,6 +47,7 @@ export default function MyPage() {
   }, []);
 
   const deleteItem = async (endpoint: string, id: number, setFn: any) => {
+    // Sletter en annonce eller favorit og fjerner den fra den viste liste.
     const token = localStorage.getItem("token");
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${endpoint}/${id}`, {
       method: "DELETE",

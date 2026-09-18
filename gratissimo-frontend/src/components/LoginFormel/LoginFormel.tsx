@@ -7,6 +7,7 @@ export default function LoginForm({ onSuccess }: { onSuccess?: () => void }) {
   const [msg, setMsg] = useState("");
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    // Sender loginoplysningerne og gemmer tokenet ved succes.
     e.preventDefault();
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {

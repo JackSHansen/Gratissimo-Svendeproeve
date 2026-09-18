@@ -9,6 +9,7 @@ export default function RegistrerPage() {
   const router = useRouter();
 
   const handleRegisterSuccess = () => {
+    // Nye brugere sendes videre til login efter oprettelsen.
     router.push("/Login");
   };
 

@@ -20,6 +20,7 @@ export default function NewsPage() {
   const [allNews, setAllNews] = useState<NewsItem[]>([]);
 
   useEffect(() => {
+    // Henter alle artikler, så den valgte artikel og nyhedslisten kan vises.
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/articles`)
       .then((res) => res.json())
       .then(setAllNews)
@@ -29,6 +30,7 @@ export default function NewsPage() {
   const selected = allNews.find((n) => String(n.id) === String(selectedId)) || allNews[0];
 
   const select = (id: string | number) => {
+    // Opdaterer URL'en og flytter brugeren til toppen af den nye artikel.
     router.push(`/News?id=${id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

@@ -12,11 +12,13 @@ export default function RedigerProfil() {
   const router = useRouter();
 
   useEffect(() => {
+    // Brugeroplysningerne hentes fra den gemte login-session.
     const savedUser = localStorage.getItem("user");
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
   const handleUpdate = async (updatedData: typeof user) => {
+    // Opdaterer profilen via det beskyttede API-endpoint.
     const token = localStorage.getItem("token");
 
     try {

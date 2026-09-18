@@ -7,6 +7,7 @@ export default function NyhedsbrevsTilmelding() {
   const [msg, setMsg] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    // Tilmelding kræver login, fordi API'et beskytter newsletter-routen.
     e.preventDefault();
     const token = localStorage.getItem("token");
 

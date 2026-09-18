@@ -8,6 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const checkAuth = () => {
+      // Holder navigationens links synkroniseret med login-tokenet.
       setIsLoggedIn(Boolean(localStorage.getItem("token")));
     };
 
@@ -22,6 +23,7 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
+    // Fjerner sessionen og sender brugeren til login.
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.dispatchEvent(new Event("auth-change"));

@@ -26,3 +26,22 @@
     opacity: 0.9;
   }
 }
+
+@media (max-width: 600px) {
+  .header {
+    gap: 1rem;
+    padding: 1.1rem 5%;
+  }
+
+  .title {
+    min-width: 0;
+    font-size: 0.72rem;
+  }
+
+  .loginLink {
+    flex: 0 1 auto;
+    padding: 0.5rem 1rem;
+    font-size: 0.68rem;
+    text-align: center;
+  }
+}

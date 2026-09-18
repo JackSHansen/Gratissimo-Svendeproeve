@@ -36,6 +36,7 @@ export default function SoegPage() {
   });
 
   useEffect(() => {
+    // Henter annoncer og viser kun dem, der passer til søgning og filtre.
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/job-listings`)
       .then((res) => res.json())
       .then((data: Annonce[]) => setAnnoncer(data.filter((item) => isMatch(item, getParam("q"), filters))))
@@ -75,6 +76,7 @@ export default function SoegPage() {
 }
 
 function isMatch(a: Annonce, query: string, f: FilterValues) {
+  // Sammenligner én annonce med alle aktive filterværdier.
   const text = `${a.title} ${a.description} ${a.organization} ${a.city} ${a.jobCategory?.name || ""}`.toLowerCase();
   if (query && !text.includes(query.toLowerCase())) return false;
 

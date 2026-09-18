@@ -24,6 +24,7 @@ export default function Søg({ filters }: { filters?: FilterValues }) {
   const router = useRouter();
 
   useEffect(() => {
+    // Henter annoncerne, som bruges til søgeforslag og filtrering.
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/job-listings`)
       .then((res) => res.json())
       .then(setJobs)
@@ -31,6 +32,7 @@ export default function Søg({ filters }: { filters?: FilterValues }) {
   }, []);
 
   const navigate = (q: string) => {
+    // Gemmer søgeteksten i URL'en, så søgeresultatet kan genskabes.
     const params = new URLSearchParams(window.location.search);
     q ? params.set("q", q) : params.delete("q");
     setQuery("");
@@ -76,6 +78,7 @@ export default function Søg({ filters }: { filters?: FilterValues }) {
 
 
 function isMatch(job: Job, query: string, filters?: FilterValues) {
+  // Kontrollerer om annoncen matcher søgetekst og valgte filtre.
   const q = query.toLowerCase();
   const text = `${job.title} ${job.organization} ${job.city} ${job.jobCategory?.name || ""}`.toLowerCase();
   if (!text.includes(q)) return false;

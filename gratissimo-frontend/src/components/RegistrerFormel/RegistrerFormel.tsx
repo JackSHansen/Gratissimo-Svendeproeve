@@ -21,6 +21,7 @@ export default function RegisterForm({ onSuccess }: RegisterFormProps) {
   const [msg, setMsg] = useState("");
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
+    // Kontrollerer adgangskoderne og opretter derefter brugeren.
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget).entries());
     const { repeatPassword, ...bodyData } = data;

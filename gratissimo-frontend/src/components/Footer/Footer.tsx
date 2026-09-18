@@ -5,6 +5,7 @@ import styles from "./Footer.module.scss";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      {/* Footerens fem kolonner samler links, nyhedsbrev og kontaktoplysninger. */}
       <div className={styles.grid}>
         <div>
           <h4>For jobsøgere</h4>

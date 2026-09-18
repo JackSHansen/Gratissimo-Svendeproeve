@@ -17,6 +17,7 @@ interface Props {
 
 export default function BrugerRedigeringsFormel({ initialData, onSubmit }: Props) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    // Sender de redigerede felter videre til profilsiden.
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget)) as UserData;
     onSubmit(data);

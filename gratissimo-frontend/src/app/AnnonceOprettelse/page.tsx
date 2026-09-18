@@ -9,6 +9,7 @@ export default function AnnonceOprettelsePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    // Annoncer kan kun oprettes af brugere med et login-token.
     setIsLoggedIn(!!localStorage.getItem("token"));
   }, []);
 

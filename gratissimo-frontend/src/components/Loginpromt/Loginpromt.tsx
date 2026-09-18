@@ -9,6 +9,7 @@ export default function Loginpromt() {
 
   useEffect(() => {
     const checkAuth = () => setIsLoggedIn(Boolean(localStorage.getItem("token")));
+    // Prompten vises kun, når der ikke findes et login-token.
     checkAuth();
 
     window.addEventListener("storage", checkAuth);

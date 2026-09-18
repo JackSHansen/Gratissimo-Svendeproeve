@@ -29,6 +29,7 @@ export default function AnnonceCards(props: AnnonceProps) {
   const [isSaved, setIsSaved] = useState(false);
 
   const saveFavorite = async () => {
+    // Gemmer annoncen som favorit for den aktuelle bruger.
     const token = localStorage.getItem("token");
     if (!token) return setMsg("Du skal være logget ind for at gemme favoritter");
 
@@ -83,6 +84,7 @@ export default function AnnonceCards(props: AnnonceProps) {
         {msg && <p className={styles.message}>{msg}</p>}
 
         <div className={styles.actions}>
+          {/* Knapperne ændres efter om kortet er ejet eller gemt. */}
           {isOwner ? (
             <>
               <button onClick={() => onDelete?.(id)} className={styles.removeBtn}>Slet</button>

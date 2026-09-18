@@ -12,6 +12,7 @@ export default function AdForm({ onSuccess }: { onSuccess?: () => void }) {
   });
 
   useEffect(() => {
+    // Henter valgmulighederne til formularens dropdowns.
     const api = process.env.NEXT_PUBLIC_API_URL;
     const fetchJson = (url: string) => fetch(`${api}/${url}`).then((res) => res.json());
 
@@ -21,6 +22,7 @@ export default function AdForm({ onSuccess }: { onSuccess?: () => void }) {
   }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    // Samler formularen og sender en annonce til API'et.
     e.preventDefault();
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user") || "null");

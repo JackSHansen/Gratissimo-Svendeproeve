@@ -19,6 +19,7 @@ export default function Kategorier() {
   const router = useRouter();
 
   useEffect(() => {
+    // Henter kategorier og tæller, hvor mange annoncer hver kategori har.
     Promise.all([
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/job-categories`).then((res) =>
         res.json(),
@@ -44,6 +45,7 @@ export default function Kategorier() {
   return (
     <div className={styles.categoryGrid}>
       {categories.map((cat) => (
+        /* Klik på en kategori åbner søgeresultaterne med filteret valgt. */
         <button
           key={cat.id}
           onClick={() =>

@@ -25,6 +25,7 @@ export default function Filter({ initialValues, onChange }: { initialValues?: Pa
   const [filters, setFilters] = useState<FilterValues>({ ...EMPTY, ...initialValues });
 
   const update = (next: FilterValues) => {
+    // Gemmer filtrene lokalt og giver dem videre til forælderen.
     setFilters(next);
     onChange?.(next);
   };
@@ -33,6 +34,7 @@ export default function Filter({ initialValues, onChange }: { initialValues?: Pa
     <div className={styles.filterContainer}>
       <span className={styles.filterLabel}>Filtrer:</span>
 
+      {/* Viser alle filtervalg fra den fælles konfiguration. */}
       {SELECTS.map(({ key, label, options }) => (
         <select key={key} value={filters[key]} onChange={(e) => update({ ...filters, [key]: e.target.value })}>
           <option value="">{label}</option>
